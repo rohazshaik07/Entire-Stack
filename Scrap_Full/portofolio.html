@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohaz Shaik - Full Stack Developer</title>
+    <meta name="description" content="Full stack developer portfolio showcasing projects and skills">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        primary: 'hsl(var(--primary))',
+                        'primary-foreground': 'hsl(var(--primary-foreground))',
+                        muted: 'hsl(var(--muted))',
+                        'muted-foreground': 'hsl(var(--muted-foreground))',
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 222.2 84% 4.9%;
+            --primary: 222.2 47.4% 11.2%;
+            --primary-foreground: 210 40% 98%;
+            --muted: 210 40% 96.1%;
+            --muted-foreground: 215.4 16.3% 46.9%;
+        }
+        
+        .dark {
+            --background: 222.2 84% 4.9%;
+            --foreground: 210 40% 98%;
+            --primary: 210 40% 98%;
+            --primary-foreground: 222.2 47.4% 11.2%;
+            --muted: 217.2 32.6% 17.5%;
+            --muted-foreground: 215 20.2% 65.1%;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+        
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.03);
+        }
+        
+        @keyframes slideInFromLeft {
+            0% { transform: translateX(-30px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        
+        .animate-slide-in {
+            animation: slideInFromLeft 0.5s ease-out forwards;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-background text-foreground antialiased">
+    <header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div class="container mx-auto flex h-14 items-center justify-between px-4 md:px-6">
+            <div class="flex items-center">
+                <a class="mr-6 flex items-center space-x-2" href="/">
+                    <span class="hidden font-bold sm:inline-block">Rohaz Shaik</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="#about" class="transition-colors hover:text-foreground/80">Home</a>
+                    <a href="#about-me" class="transition-colors hover:text-foreground/80">About Me</a>
+                    <a href="#projects" class="transition-colors hover:text-foreground/80">Projects</a>
+                    <a href="#contact" class="transition-colors hover:text-foreground/80">Contact</a>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="h-9 w-9 rounded-md p-0 inline-flex items-center justify-center text-sm font-medium transition-colors hover:bg-muted">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun h-[1.2rem] w-[1.2rem]">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2"></path>
+                        <path d="M12 20v2"></path>
+                        <path d="m4.93 4.93 1.41 1.41"></path>
+                        <path d="m17.66 17.66 1.41 1.41"></path>
+                        <path d="M2 12h2"></path>
+                        <path d="M20 12h2"></path>
+                        <path d="m6.34 17.66-1.41 1.41"></path>
+                        <path d="m19.07 4.93-1.41 1.41"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon h-[1.2rem] w-[1.2rem] hidden">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </svg>
+                </button>
+                <button class="inline-flex items-center justify-center rounded-md text-sm font-medium border border-input bg-background hover:bg-muted h-9 px-4 py-2">
+                    Resume
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 md:px-6">
+        <section id="about" class="py-12 md:py-24 lg:py-32">
+            <div class="flex flex-col items-center justify-center space-y-6 text-center fade-in">
+                <div class="space-y-3">
+                    <h1 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+                        Full Stack Developer
+                    </h1>
+                    <p class="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
+                        Aspiring full stack developer with a passion for creating user-friendly web applications using modern technologies.
+                    </p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com" target="_blank" class="inline-flex items-center justify-center rounded-md text-sm font-medium border border-input bg-background hover:bg-muted h-9 w-9 p-0 animate-slide-in opacity-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                        </svg>
+                        <span class="sr-only">GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="inline-flex items-center justify-center rounded-md text-sm font-medium border border-input bg-background hover:bg-muted h-9 w-9 p-0 animate-slide-in opacity-0 delay-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect width="4" height="12" x="2" y="9"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                        <span class="sr-only">LinkedIn</span>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="inline-flex items-center justify-center rounded-md text-sm font-medium border border-input bg-background hover:bg-muted h-9 w-9 p-0 animate-slide-in opacity-0 delay-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                        </svg>
+                        <span class="sr-only">Twitter</span>
+                    </a>
+                    <a href="mailto:hello@example.com" class="inline-flex items-center justify-center rounded-md text-sm font-medium border border-input bg-background hover:bg-muted h-9 w-9 p-0 animate-slide-in opacity-0 delay-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                        </svg>
+                        <span class="sr-only">Email</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-me" class="py-12 md:py-24 lg:py-32">
+            <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center fade-in">About Me</h2>
+            <div class="grid gap-8 md:grid-cols-2 items-start max-w-5xl mx-auto">
+                <!-- Profile Image -->
+                <div class="flex justify-center fade-in">
+                    <img src="IMG_20241024_032228_721.webp" alt="Profile Picture" class="w-172 h-192 md:w-196 md:h-196 object-cover rounded-xl border-2 border-primary shadow-xl">
+                </div>
+                <!-- About Content -->
+                <div class="space-y-6 fade-in">
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+                        <h3 class="text-lg font-semibold mb-4">Objective</h3>
+                        <p class="text-muted-foreground">
+                          BTech CSE (Internet of Things) student, aspiring Full Stack Developer, eager to leverage my skills in web development and AI-powered applications to create impactful solutions. Passionate about IoT, cybersecurity, and AI integration.
+                        </p>
+                    </div>
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+                        <h3 class="text-lg font-semibold mb-4">Education</h3>
+                        <p class="text-muted-foreground">
+                            <strong>Bachelor of Science in Computer Science</strong><br>
+                            St Ann's College of Engineering & Technology, Prakasam, Andhra Pradesh<br>
+                            2022 - 2026 ~ GPA:  7.31 <br>
+                            Relevant Coursework: Web Development, Computer Networks, Data Structures, Cloud Computing, AI & IoT
+                        </p>
+                    </div>
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+                        <h3 class="text-lg font-semibold mb-4">Technical Skills</h3>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">HTML5</span>
+                            <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">CSS3</span>
+                            <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">JavaScript</span>
+                            <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">React.js</span>
+                            <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">Node.js</span>
+                            <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">Express.js</span>
+                            <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">MongoDB</span>
+                            <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">Git</span>
+                        </div>
+                    </div>
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+                        <h3 class="text-lg font-semibold mb-4">Certifications</h3>
+                        <p class="text-muted-foreground">
+                            - Responsive Web Design (Nxt Wave)<br>
+                            - JavaScript Algorithms and Data Structures (Nxt Wave)<br>
+                            - Full Stack Development Bootcamp Certificate (Nxt Wave)<br>
+                        </p>
+                    </div>
+                    <!-- Moved Soft Skills to bottom -->
+                    <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6">
+                        <h3 class="text-lg font-semibold mb-4">Soft Skills</h3>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">Problem Solving</span>
+                            <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">Team Collaboration</span>
+                            <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">Time Management</span>
+                            <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">Adaptability</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-12 md:py-24 lg:py-32">
+            <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center fade-in">Projects</h2>
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+                <div class="rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden hover-scale stagger-item">
+                    <div class="relative aspect-video">
+                        <img src="/placeholder.svg?height=400&width=600" alt="E-commerce Platform" class="object-cover w-full h-full transition-transform hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-xl mb-2">E-commerce Platform</h3>
+                        <p class="text-sm text-muted-foreground mb-4">A full-stack e-commerce platform built with Next.js, Prisma, and Stripe integration.</p>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium ring-1 ring-inset ring-gray-500/10">Next.js</span>
+                            <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium ring-1 ring-inset ring-gray-500/10">Prisma</span>
+                            <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium ring-1 ring-inset ring-gray-500/10">Stripe</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 text-center">
+                        <a href="https://github.com" target="_blank" class="inline-flex items-center gap-2 text-sm hover:underline">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                            </svg>
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden hover-scale stagger-item">
+                    <div class="relative aspect-video">
+                        <img src="/placeholder.svg?height=400&width=600" alt="Task Management App" class="object-cover w-full h-full transition-transform hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-xl mb-2">Task Management App</h3>
+                        <p class="text-sm text-muted-foreground mb-4">A real-time task management application with team collaboration features.</p>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium ring-1 ring-inset ring-gray-500/10">React</span>
+                            <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium ring-1 ring-inset ring-gray-500/10">Node.js</span>
+                            <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium ring-1 ring-inset ring-gray-500/10">Socket.io</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 text-center">
+                        <a href="https://github.com" target="_blank" class="inline-flex items-center gap-2 text-sm hover:underline">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                            </svg>
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden hover-scale stagger-item">
+                    <div class="relative aspect-video">
+                        <img src="/placeholder.svg?height=400&width=600" alt="AI Chat Interface" class="object-cover w-full h-full transition-transform hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold text-xl mb-2">AI Chat Interface</h3>
+                        <p class="text-sm text-muted-foreground mb-4">An AI-powered chat interface with natural language processing capabilities.</p>
+                        <div class="flex flex-wrap gap-2 justify-center">
+                            <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium ring-1 ring-inset ring-gray-500/10">OpenAI</span>
+                            <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium ring-1 ring-inset ring-gray-500/10">Next.js</span>
+                            <span class="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium ring-1 ring-inset ring-gray-500/10">TailwindCSS</span>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 text-center">
+                        <a href="https://github.com" target="_blank" class="inline-flex items-center gap-2 text-sm hover:underline">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4">
+                                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                            </svg>
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 md:py-24 lg:py-32">
+            <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center fade-in">Tech Stack</h2>
+            <div class="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+                <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 fade-in">
+                    <h3 class="text-lg font-semibold mb-4 text-center">Frontend</h3>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">React</span>
+                        <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">Next.js</span>
+                        <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">TypeScript</span>
+                        <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">TailwindCSS</span>
+                    </div>
+                </div>
+
+                <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 fade-in">
+                    <h3 class="text-lg font-semibold mb-4 text-center">Backend</h3>
+                    <div class="flex flex-wrap gap-2 justify-center">
+                        <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">Node.js</span>
+                        <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">Express</span>
+                        <span class="inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-12 md:py-24 lg:py-32">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center fade-in">
+                    Get in Touch
+                </h2>
+                <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 fade-in">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium mb-2">
+                                Name
+                            </label>
+                            <input id="name" name="name" required class="flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">
+                                Email
+                            </label>
+                            <input id="email" name="email" type="email" required class="flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium mb-2">
+                                Message
+                            </label>
+                            <textarea id="message" name="message" required class="flex min-h-[100px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn" class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-primary text-primary-foreground shadow hover:bg-primary/90 h-10 px-4 py-2 w-full">
+                            Send Message
+                        </button>
+                        <p id="form-message" class="text-sm text-center mt-4 text-muted-foreground hidden"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t">
+        <div class="container mx-auto flex flex-col gap-4 sm:flex-row py-6 items-center justify-between px-4 md:px-6">
+            <p class="text-xs text-gray-500 dark:text-gray-400">© 2024 John.dev. All rights reserved.</p>
+            <nav class="flex gap-4 sm:gap-6">
+                <a class="text-xs hover:underline underline-offset-4" href="#">Terms of Service</a>
+                <a class="text-xs hover:underline underline-offset-4" href="#">Privacy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = themeToggle.querySelector('.sun');
+        const moonIcon = themeToggle.querySelector('.moon');
+        
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.documentElement.classList.add('dark');
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark');
+            if (isDark) {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const staggerItems = document.querySelectorAll('.stagger-item');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => fadeObserver.observe(element));
+        
+        const staggerObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 150);
+                    staggerObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        staggerItems.forEach(item => staggerObserver.observe(item));
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const socialIcons = document.querySelectorAll('.animate-slide-in');
+            socialIcons.forEach((icon, index) => {
+                setTimeout(() => {
+                    icon.style.opacity = '1';
+                }, 300 + (index * 100));
+            });
+        });
+        
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+        const submitBtn = document.getElementById('submit-btn');
+        
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            const formData = new FormData(contactForm);
+            setTimeout(() => {
+                formMessage.textContent = "Thanks for your message! I'll get back to you soon.";
+                formMessage.classList.remove('hidden');
+                contactForm.reset();
+                submitBtn.textContent = 'Send Message';
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
